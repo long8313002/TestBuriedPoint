@@ -20,8 +20,6 @@ import java.util.concurrent.Future;
  * Created by Administrator on 2016/8/11.
  */
 public class ProxyListenerControl {
-
-    public static final int proxy_listener_tag = 0x7f0b0007;
     private static ProxyListenerControl control = new ProxyListenerControl();
     public static final String TAG = "ProxyEvent";
     private PackagedActivity mActivity;
@@ -125,7 +123,7 @@ public class ProxyListenerControl {
         if (!hasProxyViews.get(view.hashCode(), false)) {
             return true;
         }
-        Object tag = view.getTag(proxy_listener_tag);
+        Object tag = view.getTag(ABSConfigure.proxy_listener_tag);
         return tag != null && (boolean) tag;
     }
 

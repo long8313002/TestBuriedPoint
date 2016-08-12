@@ -1,11 +1,56 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <Button
+        android:onClick="onClick1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button1" />
 
-</RelativeLayout>
+    <Button
+        android:onClick="onClick2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button2" />
+
+    <Button
+        android:onClick="onClick3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button3" />
+
+    <Button
+        android:onClick="onClick4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button4" />
+
+    <Button
+        android:onClick="onClick5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button5" />
+
+    <Button
+        android:onClick="onClick6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button6" />
+
+    <Button
+        android:onClick="onClick7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button7" />
+
+    <Button
+        android:onClick="onClick8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button8" />
+
+</LinearLayout>

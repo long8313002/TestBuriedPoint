@@ -1,6 +1,7 @@
 package cn.xyz.notracepoint;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.File;
@@ -48,6 +49,9 @@ public class EventLogManager {
     }
 
     public void loadLogFileToLocal(String url) {
+        if(TextUtils.isEmpty(url)){
+            return;
+        }
         if (!BASEPATH.exists()) {
             BASEPATH.mkdirs();
         }

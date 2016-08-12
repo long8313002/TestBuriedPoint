@@ -11,7 +11,7 @@ import android.os.Bundle;
 public class StatisticsActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
+        ActivityLifeManager.getInstance().onActivityCreated(activity,savedInstanceState);
     }
 
     @Override
@@ -21,12 +21,12 @@ public class StatisticsActivityLifecycleCallbacks implements Application.Activit
 
     @Override
     public void onActivityResumed(Activity activity) {
-
+        ActivityLifeManager.getInstance().onActivityResumed(activity);
     }
 
     @Override
     public void onActivityPaused(Activity activity) {
-
+        ActivityLifeManager.getInstance().onActivityPaused(activity);
     }
 
     @Override
@@ -41,6 +41,6 @@ public class StatisticsActivityLifecycleCallbacks implements Application.Activit
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-
+        ActivityLifeManager.getInstance().onActivityDestroyed(activity);
     }
 }
