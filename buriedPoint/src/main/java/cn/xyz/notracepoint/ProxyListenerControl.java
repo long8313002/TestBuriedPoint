@@ -257,7 +257,7 @@ public class ProxyListenerControl {
         View view = ((View) args[0]);
         int viewId = view.getId();
         String sViewId = getViewIdResourceName(viewId);
-        String viewDescribe = getViewDescribe(view);
+        String viewDescribe = NOTracePointUtils.getViewDescribe(view);
         EventLogManager.getInstence().recodeLog(sViewId, activityName, viewDescribe);
     }
 
@@ -283,7 +283,7 @@ public class ProxyListenerControl {
         }
         int viewId = ((View) args[0]).getId();
         String sViewId = activity.getResources().getResourceName(viewId).split("/")[1];
-        String viewDescribe = getViewDescribe((View) args[1]);
+        String viewDescribe = NOTracePointUtils.getViewDescribe((View) args[1]);
         EventLogManager.getInstence().recodeLog(sViewId, activityName, viewDescribe);
     }
 
@@ -299,28 +299,9 @@ public class ProxyListenerControl {
         int viewId = (int) args[1];
         View view = activity.findViewById(viewId);
         String sViewId = activity.getResources().getResourceName(viewId).split("/")[1];
-        String viewDescribe = getViewDescribe(view);
+        String viewDescribe = NOTracePointUtils.getViewDescribe(view);
         EventLogManager.getInstence().recodeLog(sViewId, activityName, viewDescribe);
     }
 
-    //获得当前View中所有正在显示的文字
-    private String getViewDescribe(View view) {
-        StringBuilder describe = new StringBuilder();
-        if (view instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup) view;
-            for (int i = 0; i < group.getChildCount(); i++) {
-                String des = getViewDescribe(group.getChildAt(i));
-                describe.append(des);
-            }
-        }
-
-        if (view instanceof TextView) {
-            TextView tv = (TextView) view;
-            describe.append(tv.getText().toString());
-            return describe.toString();
-        }
-        return describe.toString();
-
-    }
 
 }

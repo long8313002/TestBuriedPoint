@@ -124,6 +124,7 @@ public class EventLogManager {
         activity = (activity == null ? "" : activity);
         tag = (tag == null ? "" : tag);
         final EventBuriedPoint eventBuriedPoint = new EventBuriedPoint(id, activity, tag);
+        Log.i("EventLog：",eventBuriedPoint.toString());
         new Thread(new Runnable() {
             @Override
             public void run() {

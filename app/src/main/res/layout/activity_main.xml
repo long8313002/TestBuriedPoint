@@ -11,11 +11,22 @@
         android:layout_height="wrap_content"
         android:text="button1" />
 
-    <Button
-        android:onClick="onClick2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="button2" />
+
+    <LinearLayout
+        android:id="@+id/ll_contair"
+        android:orientation="vertical"
+        android:padding="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:onClick="onClick2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button2" />
+
+    </LinearLayout>
+
 
     <Button
         android:onClick="onClick3"

@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -105,5 +107,27 @@ public class NOTracePointUtils {
         }
 
         return "";
+    }
+
+    /**
+     *获得当前View中所有正在显示的文字
+     */
+    public static String getViewDescribe(View view) {
+        StringBuilder describe = new StringBuilder();
+        if (view instanceof ViewGroup) {
+            ViewGroup group = (ViewGroup) view;
+            for (int i = 0; i < group.getChildCount(); i++) {
+                String des = getViewDescribe(group.getChildAt(i));
+                describe.append(des);
+            }
+        }
+
+        if (view instanceof TextView) {
+            TextView tv = (TextView) view;
+            describe.append(tv.getText().toString());
+            return describe.toString();
+        }
+        return describe.toString();
+
     }
 }

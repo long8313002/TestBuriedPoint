@@ -1,5 +1,6 @@
 package notracepoint.xyz.cn.testpoint;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,13 +8,24 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
-public class MainActivity extends AppCompatActivity {
+import cn.xyz.notracepoint.Statistics;
+
+@Statistics.UserProxyTouchPattern
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.ll_contair).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("point","ll_contair");
+            }
+        });
     }
 
     public void onClick1(View view){
