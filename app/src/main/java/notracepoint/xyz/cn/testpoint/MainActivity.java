@@ -12,7 +12,6 @@ import android.view.Window;
 
 import cn.xyz.notracepoint.Statistics;
 
-@Statistics.UserProxyTouchPattern
 public class MainActivity extends Activity {
 
     @Override

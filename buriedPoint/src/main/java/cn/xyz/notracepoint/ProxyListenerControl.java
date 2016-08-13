@@ -33,7 +33,7 @@ public class ProxyListenerControl {
 
     public void init(PackagedActivity activity) {
         this.mActivity = activity;
-        if(mActivity.getActivity()==null){
+        if (mActivity.getActivity() == null) {
             return;
         }
         registerEvent(mActivity.getActivity().getWindow().getDecorView());
@@ -86,7 +86,7 @@ public class ProxyListenerControl {
     private void onWindowFourceChange() {
 
         List<View> allWindowViews = NOTracePointUtils.getAllWindowViews();
-        if(allWindowViews == null ||allWindowViews.size() <=1){
+        if (allWindowViews == null || allWindowViews.size() <= 1) {
             return;
         }
         for (int i = 1; i < allWindowViews.size(); i++) {
@@ -99,14 +99,14 @@ public class ProxyListenerControl {
         if (view == null) {
             return;
         }
-        if(view instanceof ViewGroup){
+        if (view instanceof ViewGroup) {
             proxyGroupView((ViewGroup) view);
         }
         proxyChildView(view);
     }
 
-    private void proxyChildView(View view){
-        if(!isNeedProxy(view)){
+    private void proxyChildView(View view) {
+        if (!isNeedProxy(view)) {
             return;
         }
         View.OnClickListener clickListener = getClickListener(view);
@@ -116,7 +116,7 @@ public class ProxyListenerControl {
         setProxyOnClickListener(view, clickListener);
         setProxyOnItemClick(view, onItemClickListener);
         setProxyOnCheckedChangeListener(view, onCheckedChangeListener);
-        hasProxyViews.put(view.hashCode(),true);
+        hasProxyViews.put(view.hashCode(), true);
     }
 
     private boolean isNeedProxy(View view) {
@@ -137,39 +137,21 @@ public class ProxyListenerControl {
 
     private void setProxyOnClickListener(View view, final View.OnClickListener clickListener) {
         if (clickListener != null && !isProxy(clickListener.getClass())) {
-            View.OnClickListener proxyClick = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    clickListener.onClick(v);
-                }
-            };
-            proxyClick = ProxyManager.getProxyListener(proxyClick, null, afterCallListener);
+            View.OnClickListener proxyClick = ProxyManager.getProxyListener(clickListener, null, afterCallListener);
             view.setOnClickListener(proxyClick);
         }
     }
 
     private void setProxyOnItemClick(View view, final AdapterView.OnItemClickListener onItemClickListener) {
         if (onItemClickListener != null && !isProxy(onItemClickListener.getClass())) {
-            AdapterView.OnItemClickListener proxyClick = new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    onItemClickListener.onItemClick(parent, view, position, id);
-                }
-            };
-            proxyClick = ProxyManager.getProxyListener(proxyClick, null, afterCallListener);
+            AdapterView.OnItemClickListener proxyClick = ProxyManager.getProxyListener(onItemClickListener, null, afterCallListener);
             ((AdapterView) view).setOnItemClickListener(proxyClick);
         }
     }
 
     private void setProxyOnCheckedChangeListener(View view, final RadioGroup.OnCheckedChangeListener onCheckedChangeListener) {
         if (onCheckedChangeListener != null && !isProxy(onCheckedChangeListener.getClass())) {
-            RadioGroup.OnCheckedChangeListener proxyClick = new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    onCheckedChangeListener.onCheckedChanged(group,checkedId);
-                }
-            };
-            proxyClick = ProxyManager.getProxyListener(proxyClick, null, afterCallListener);
+            RadioGroup.OnCheckedChangeListener proxyClick = ProxyManager.getProxyListener(onCheckedChangeListener, null, afterCallListener);
             ((RadioGroup) view).setOnCheckedChangeListener(proxyClick);
         }
     }
@@ -261,12 +243,12 @@ public class ProxyListenerControl {
         EventLogManager.getInstence().recodeLog(sViewId, activityName, viewDescribe);
     }
 
-    private String getViewIdResourceName(int viewId){
-        if(viewId == -1){
+    private String getViewIdResourceName(int viewId) {
+        if (viewId == -1) {
             return "";
         }
         Activity activity = mActivity.getActivity();
-        if(activity == null){
+        if (activity == null) {
             return "";
         }
         return activity.getResources().getResourceName(viewId).split("/")[1];
@@ -278,7 +260,7 @@ public class ProxyListenerControl {
             return;
         }
         Activity activity = mActivity.getActivity();
-        if(activity == null){
+        if (activity == null) {
             return;
         }
         int viewId = ((View) args[0]).getId();
@@ -293,7 +275,7 @@ public class ProxyListenerControl {
             return;
         }
         Activity activity = mActivity.getActivity();
-        if(activity == null){
+        if (activity == null) {
             return;
         }
         int viewId = (int) args[1];
